@@ -1,0 +1,19 @@
+name: Podman Info
+on:
+  workflow_dispatch:
+jobs:
+  podman-in-docker:
+    runs-on: ubuntu-latest
+    container:
+      image: quay.io/podman/stable
+      options: --privileged
+    steps:
+      - run: podman info
+  podman-ubuntu-latest:
+    runs-on: ubuntu-latest
+    steps:
+      - run: podman info --debug
+  podman-ubuntu-24_04:
+    runs-on: ubuntu-24.04
+    steps:
+      - run: podman info
