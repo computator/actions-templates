@@ -39,7 +39,7 @@ jobs:
       - run: podman image inspect --format '{{ range .RepoTags }}{{ . }} {{ end }}'
           ${{ env.IMAGE }} | xargs -n 1 podman push
 
-      - if: ${{ !cancelled() }}
+      - if: ${{ !cancelled() }} # runs even if previous steps failed
         run: podman logout ${{ env.REGISTRY }}
 
       - id: export-cache
