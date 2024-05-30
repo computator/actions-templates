@@ -34,7 +34,8 @@ jobs:
 
       - uses: actions/checkout@v4
 
-      - run: podman build -t ${{ env.IMAGE }} .
+      # TODO: switch to --pull=newer once supported https://github.com/containers/podman/issues/22845
+      - run: podman build --pull=always -t ${{ env.IMAGE }} .
 
       - run: podman image inspect --format '{{ range .RepoTags }}{{ . }} {{ end }}'
           ${{ env.IMAGE }} | xargs -n 1 podman push
