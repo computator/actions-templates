@@ -13,7 +13,3 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: podman info --debug
-  podman-ubuntu-24_04:
-    runs-on: ubuntu-24.04
-    steps:
-      - run: podman info
